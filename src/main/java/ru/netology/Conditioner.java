@@ -54,18 +54,18 @@ public class Conditioner {
     }
 
 
-    public void increaseCurrentTemperature() {   //вам не нужно в метод передавать значение
-        if (currentTemperature == maxTemperature) {  //а просто работать с полем, которое в классе у вас уже определено
-            return;                //если текущая температура уже достигла максимума, то вы ничего не делаете и "выходите" из метода
+    public void increaseCurrentTemperature() {
+        if (currentTemperature == maxTemperature) {
+            return;
         }
-        currentTemperature++;         //а если не максимальная, то прибавляете на единицу
+        currentTemperature++;
     }
 
-    public void decreaseCurrentTemperature(int currentTemperature) {
-        if (currentTemperature == minTemperature) {
+    public void decreaseCurrentTemperature() {
+        if (this.currentTemperature == minTemperature) {
            return;
         }
-        currentTemperature--;
+        this.currentTemperature--;
     }
 }
 
