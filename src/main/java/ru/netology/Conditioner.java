@@ -6,7 +6,6 @@ public class Conditioner {
     private int minTemperature;
     private int currentTemperature;
     private boolean on;
-    private int temperatureStep = 1;
 
     public String getName() {
         return name;
@@ -54,19 +53,19 @@ public class Conditioner {
         this.on = on;
     }
 
-    public void increaseCurrentTemperature(int currentTemperature) {
-        if (currentTemperature + temperatureStep <= maxTemperature) {
-            currentTemperature = this.currentTemperature + temperatureStep;
+
+    public void increaseCurrentTemperature() {   //вам не нужно в метод передавать значение
+        if (currentTemperature == maxTemperature) {  //а просто работать с полем, которое в классе у вас уже определено
+            return;                //если текущая температура уже достигла максимума, то вы ничего не делаете и "выходите" из метода
         }
-        this.currentTemperature = currentTemperature;
+        currentTemperature++;         //а если не максимальная, то прибавляете на единицу
     }
 
-
     public void decreaseCurrentTemperature(int currentTemperature) {
-        if (currentTemperature - temperatureStep >= minTemperature) {
-            currentTemperature = this.currentTemperature - temperatureStep;
+        if (currentTemperature == minTemperature) {
+           return;
         }
-        this.currentTemperature = currentTemperature;
+        currentTemperature--;
     }
 }
 
