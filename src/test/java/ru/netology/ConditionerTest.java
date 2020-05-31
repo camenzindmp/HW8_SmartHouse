@@ -7,15 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConditionerTest {
 
     @Test
-    void setCurrentTemperature() {
+    void setCurrentTemperature() {             //установить температуру в позволенных рамках;
         Conditioner conditioner = new Conditioner();
         conditioner.setMaxTemperature(25);
-        conditioner.setMinTemperature(-12);
-        assertEquals(0, conditioner.getCurrentTemperature());
-        conditioner.setCurrentTemperature(-100);
+        conditioner.setMinTemperature(-15);
+        conditioner.setCurrentTemperature(15);
+        assertEquals(15, conditioner.getCurrentTemperature());
+    }
+
+    @Test
+    void setCurrentTemperatureOverTheUpperBound() {   //установить температуру выше максимума;
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(25);
+        conditioner.setMinTemperature(-15);
+        conditioner.setCurrentTemperature(30);
         assertEquals(0, conditioner.getCurrentTemperature());
     }
 
+    @Test
+    void setCurrentTemperatureBelowTheLowerBound() {    //установить температуру ниже минимума;
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(25);
+        conditioner.setMinTemperature(-15);
+        conditioner.setCurrentTemperature(-20);
+        assertEquals(0, conditioner.getCurrentTemperature());
+    }
 
     @Test
     void increaseCurrentTemperature() {          //вызов метода должен повышать t на 1;
